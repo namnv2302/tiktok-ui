@@ -1,0 +1,107 @@
+.search {
+    display: flex;
+    position: relative;
+    width: 361px;
+    height: var(--search-height);
+    padding-left: 16px;
+    border-radius: var(--search-border-radius);
+    background-color: rgba(22, 24, 35, 0.06);
+
+    input {
+        flex: 1;
+        height: 100%;
+        padding-right: 40px;
+        font-size: 1.6rem;
+        caret-color: var(--primary);
+        color: var(--black);
+        background-color: transparent;
+        font-family: var(--font-family);
+    }
+
+    input:not(:placeholder-shown) ~ .search-btn svg {
+        fill: rgba(22, 24, 35, 0.75);
+    }
+
+    input:focus ~ .search-border {
+        display: block;
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: 9px;
+        right: var(--search-button-width);
+        height: 28px;
+        width: 1px;
+        background-color: rgba(22, 24, 35, 0.12);
+    }
+}
+
+.clear,
+.loading {
+    position: absolute;
+    right: calc(var(--search-button-width) + 12px);
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(22, 24, 35, 0.34);
+}
+
+.loading {
+    animation: spinner 0.8s linear infinite;
+}
+
+@keyframes spinner {
+    from {
+        transform: translateY(-50%) rotate(0);
+    }
+    to {
+        transform: translateY(-50%) rotate(360deg);
+    }
+}
+
+.search-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--search-button-width);
+    height: 100%;
+    font-size: 2rem;
+    border-top-right-radius: var(--search-border-radius);
+    border-bottom-right-radius: var(--search-border-radius);
+
+    svg {
+        fill: rgba(22, 24, 35, 0.34);
+    }
+
+    &:hover {
+        cursor: pointer;
+        background-color: rgba(22, 24, 35, 0.03);
+    }
+
+    &:active {
+        background-color: rgba(22, 24, 35, 0.06);
+    }
+}
+
+.search-border {
+    display: none;
+    position: absolute;
+    top: -0.5px;
+    right: -0.5px;
+    bottom: -0.5px;
+    left: -0.5px;
+    border: 1.5px solid rgba(22, 24, 35, 0.2);
+    border-radius: var(--search-border-radius);
+    z-index: -1;
+}
+
+.search-result {
+    width: 361px;
+}
+
+.search-title {
+    padding: 5px 12px;
+    font-weight: 600;
+    font-size: 1.4rem;
+    color: rgba(22, 24, 35, 0.5);
+}
